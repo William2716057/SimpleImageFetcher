@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Simple Image Fetcher</title>
+</head>
+
+<body>
+    <img src="1" id="monkeys" align="1500" />
+    <script>
+        console.log('Now fetching an image')
+
+        catchMonkey()
+            .then(response => {
+                console.log('done');
+            })
+            .catch(error => {
+                console.log('error');
+                console.log(error);
+            });
+
+        async function catchMonkey() {
+            const response = await fetch('monkeys.jpg')
+            const blob = await response.blob();
+            document.getElementById('monkeys').src = URL.createObjectURL(blob);
+        }
+    </script>
+
+</body>
+</html>
